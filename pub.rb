@@ -16,4 +16,16 @@ attr_reader :name, :till
     return @drinks << drink
   end
 
+  def sale_amount(price_of_drink)
+    @till += price_of_drink
+  end
+
+  def remove_drink(drink)
+    return @drinks.delete(drink)
+  end
+
+  
+
+
+
 end
