@@ -14,14 +14,14 @@ class PubTest < Minitest::Test
 
     @pub = Pub.new("Black Bull", 1000.00)
 
-    @drink1 = Drink.new("Guiness", 4.0)
-    @drink2 = Drink.new("Lager", 3.5)
-    @drink3 = Drink.new("Juice", 2.5)
-    @drink4 = Drink.new("Wine", 3.0)
+    @drink1 = Drink.new("Guiness", 4.0, 2)
+    @drink2 = Drink.new("Lager", 3.5, 1)
+    @drink3 = Drink.new("Juice", 2.5, 0)
+    @drink4 = Drink.new("Wine", 3.0, 3)
 
     @pub_drinks = [@drink1, @drink2, @drink3, @drink4]
 
-    @customer = Customer.new("Robert", 100.00)
+    @customer = Customer.new("Robert", 100.00, 22, 0)
 
   end
 
@@ -69,7 +69,9 @@ class PubTest < Minitest::Test
   end
 
   def test_customer_can_buy_drink
+      assert_equal(true, @customer.age_check)
       assert_equal(true, @customer.sufficient_funds(@drink1.price))
+      assert_equal(true, @customer.alcohol_limit)
       @customer.remove_cash(@drink1.price)
       @pub.sale_amount(@drink1.price)
       @pub.remove_drink(@drink1)
@@ -77,7 +79,10 @@ class PubTest < Minitest::Test
       assert_equal(1, @customer.personal_drinks_total)
       assert_equal(1004.00, @pub.till)
       assert_equal(96.00, @customer.wallet)
+      @customer.alcohol_increase(@drink1.alcohol_level)
+      assert_equal(2, @customer.drunk)
   end
+
 
 
 

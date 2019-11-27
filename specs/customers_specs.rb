@@ -10,9 +10,9 @@ require_relative('../drinks')
 class CustomerTest < Minitest::Test
 
   def setup
-    @customer = Customer.new("Bob", 50.00)
+    @customer = Customer.new("Bob", 50.00, 34, 0)
 
-    @drink = Drink.new("Guiness", 4.00)
+    @drink = Drink.new("Guiness", 4.00, 2)
   end
 
   def test_customer_has_a_name
@@ -40,5 +40,36 @@ class CustomerTest < Minitest::Test
     assert_equal(1, @customer.add_drink_to_customer(@drink).length)
   end
 
+  def test_customer_has_age
+    assert_equal(34, @customer.age)
+  end
+
+  def test_check_customer_age
+    assert_equal(true, @customer.age_check)
+  end
+
+  def test_customer_drunkeness_level_zero
+    assert_equal(0, @customer.drunk)
+  end
+
+  def alcohol_increase
+    @customer.alcohol_increase(@drink.alcohol_level)
+    assert_equal(2, @customer.drunk)
+  end
+
+  def test_alcohol_limit__if_drunk
+    @customer.alcohol_increase(@drink.alcohol_level)
+    @customer.alcohol_increase(@drink.alcohol_level)
+    @customer.alcohol_increase(@drink.alcohol_level)
+    @customer.alcohol_increase(@drink.alcohol_level)
+    @customer.alcohol_increase(@drink.alcohol_level)
+    assert_equal(true, @customer.alcohol_limit)
+  end
+
+  def test_alcohol_limit__if_drunk
+    @customer.alcohol_increase(@drink.alcohol_level)
+    @customer.alcohol_increase(@drink.alcohol_level)
+    assert_equal(false, @customer.alcohol_limit)
+  end
 
 end
