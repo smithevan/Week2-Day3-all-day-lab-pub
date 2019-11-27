@@ -6,6 +6,7 @@ Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 require_relative('../pub')
 require_relative('../drinks')
 require_relative('../customers')
+require_relative('../food')
 
 
 class PubTest < Minitest::Test
@@ -71,7 +72,7 @@ class PubTest < Minitest::Test
   def test_customer_can_buy_drink
       assert_equal(true, @customer.age_check)
       assert_equal(true, @customer.sufficient_funds(@drink1.price))
-      assert_equal(true, @customer.alcohol_limit)
+      assert_equal(false, @customer.alcohol_limit)
       @customer.remove_cash(@drink1.price)
       @pub.sale_amount(@drink1.price)
       @pub.remove_drink(@drink1)

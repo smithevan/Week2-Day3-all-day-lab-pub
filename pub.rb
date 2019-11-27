@@ -24,7 +24,7 @@ attr_reader :name, :till
     return @drinks.delete(drink)
   end
 
-  
+
 
 
 

@@ -41,5 +41,9 @@ attr_reader :name, :wallet, :age, :drunk
     return false
   end
 
+  def alcohol_decrease(food)
+    @drunk -= food 
+  end
+
 
 end
