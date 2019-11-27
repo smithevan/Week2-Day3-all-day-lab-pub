@@ -24,6 +24,12 @@ attr_reader :name, :till
     return @drinks.delete(drink)
   end
 
+  def drink_count
+    total ==  0
+    for drink in @drinks
+      total_stock_value += 1
+    end
+  end
 
 
 
