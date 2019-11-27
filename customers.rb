@@ -15,7 +15,7 @@ attr_reader :name, :wallet, :age, :drunk
   end
 
   def sufficient_funds(drink)
-    return true if @wallet > drink
+    return true if @wallet >= drink
     return false
   end
 
@@ -42,7 +42,7 @@ attr_reader :name, :wallet, :age, :drunk
   end
 
   def alcohol_decrease(food)
-    @drunk -= food 
+    @drunk -= food
   end
 
 
