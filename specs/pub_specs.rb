@@ -75,6 +75,8 @@ class PubTest < Minitest::Test
       @pub.remove_drink(@drink1)
       @customer.add_drink_to_customer(@drink1)
       assert_equal(1, @customer.personal_drinks_total)
+      assert_equal(1004.00, @pub.till)
+      assert_equal(96.00, @customer.wallet)
   end
 
 
