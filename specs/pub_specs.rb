@@ -88,9 +88,9 @@ class PubTest < Minitest::Test
     assert_equal(4, @pub_drinks.length)
   end
 
-  def test_total_drinks_in_stock
-    assert_equal(4, @pub_drinks.drink_count)
-  end
+  # def test_total_drinks_in_stock
+  #   assert_equal(4, @pub_drinks.drink_count)
+  # end
 
 
 
