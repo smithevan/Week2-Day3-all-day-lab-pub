@@ -1,11 +1,12 @@
 class Pub
 
-attr_reader :name, :till
+attr_reader :name, :till, :stock
 
-  def initialize(name, till)
+  def initialize(name, till, stock = 0)
     @name = name
     @till = till
     @drinks = []
+    @stock = stock
   end
 
   def total_drinks
@@ -24,12 +25,12 @@ attr_reader :name, :till
     return @drinks.delete(drink)
   end
 
-  # def drink_count
-  #   total ==  0
-  #   for drink in @drinks
-  #     total_stock_value += 1
-  #   end
-  # end
+  def drink_count(all_drinks)
+    for drink in all_drinks
+      @stock += 1
+    end
+    return @stock
+  end
 
 
 
